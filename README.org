@@ -1,0 +1,4 @@
+* Programming Language Concepts
+
+This repository contains the slides and code available at
+https://www.itu.dk/people/sestoft/plc/.
