@@ -1,6 +1,6 @@
 * Programming Language Concepts
 
-My repository for working through Peter Sesoft's book, [[https://www.itu.dk/people/sestoft/plc/]["Programming Language Concepts"]].
+My repository for working through Peter Sestoft's book, [[https://www.itu.dk/people/sestoft/plc/]["Programming Language Concepts"]].
 
 If you're interested in doing the same, check out the
-[[https://github.com/steshaw/plc-sesoft/tree/imported][=imported=]] branch.
+=[[https://github.com/steshaw/plc-sesoft/tree/imported][imported]]= branch.
