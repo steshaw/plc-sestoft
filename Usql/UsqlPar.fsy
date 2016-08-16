@@ -1,0 +1,94 @@
+%{
+  (* Usql/UsqlPar.fsy
+     Parser specification for micro-SQL
+     sestoft@itu.dk 2009-09-03 *)
+
+  open Absyn;
+%}
+
+%token <int> CSTINT
+%token <string> CSTSTRING NAME
+%token <bool> CSTBOOL
+
+%token AND FROM NOT OR SELECT WHERE
+%token PLUS MINUS TIMES DIV MOD
+%token EQ NE GT LT GE LE 
+%token LPAR RPAR COMMA DOT
+%token EOF
+
+%left OR		/* lowest precedence */
+%left AND
+%left EQ NE 
+%nonassoc GT LT GE LE
+%left PLUS MINUS
+%left TIMES DIV MOD 
+%nonassoc NOT
+%nonassoc DOT           /* highest precedence  */
+
+%start Main
+%type <Absyn.stmt> Main
+%type <Absyn.stmt> Stmt
+%type <Absyn.column> Column
+%type <Absyn.expr> Expr
+%type <Absyn.expr list> Exprs Exprs1
+%type <Absyn.constant> Const
+%type <string list> Names1
+
+%%
+
+Main:
+    Stmt EOF				{ $1 }
+;
+
+Stmt:
+    SELECT Exprs1 FROM Names1          { Select($2, $4) }
+;
+
+Names1: 
+    NAME                                { [$1]     }
+  | NAME COMMA Names1                   { $1 :: $3 }
+;
+
+Column: 
+    NAME				{ Column $1           }
+  | NAME DOT NAME			{ TableColumn($1, $3) }
+;
+
+Expr:
+    TIMES				{ Star                 }
+  | Column				{ ColumnExpr $1        } 
+  | NAME LPAR Exprs RPAR		{ Prim($1, $3)         }
+  | Const                               { Cst($1)              }
+  | LPAR Expr RPAR                      { $2                   }
+  | NOT Expr                            { Prim("!", [$2])      }
+  | Expr PLUS  Expr                     { Prim("+",  [$1; $3]) }
+  | Expr MINUS Expr                     { Prim("-",  [$1; $3]) }
+  | Expr TIMES Expr                     { Prim("*",  [$1; $3]) }
+  | Expr DIV   Expr                     { Prim("/",  [$1; $3]) }
+  | Expr MOD   Expr                     { Prim("%",  [$1; $3]) }
+  | Expr EQ    Expr                     { Prim("==", [$1; $3]) }
+  | Expr NE    Expr                     { Prim("!=", [$1; $3]) }
+  | Expr GT    Expr                     { Prim(">",  [$1; $3]) }
+  | Expr LT    Expr                     { Prim("<",  [$1; $3]) }
+  | Expr GE    Expr                     { Prim(">=", [$1; $3]) }
+  | Expr LE    Expr                     { Prim("<=", [$1; $3]) }
+  | Expr AND   Expr                     { Prim("&&", [$1; $3]) }
+  | Expr OR    Expr                     { Prim("||", [$1; $3]) }
+;
+
+Exprs:
+    /* empty */                         { [] }
+  | Exprs1                              { $1 }
+;
+
+Exprs1:
+    Expr                                { [$1]     }
+  | Expr COMMA Exprs1                   { $1 :: $3 }
+;
+
+Const:
+    CSTINT                              { CstI($1)   }
+  | MINUS CSTINT                        { CstI(-$2) }
+  | CSTBOOL                             { CstB($1)   }
+  | CSTSTRING                           { CstS($1)   }
+;

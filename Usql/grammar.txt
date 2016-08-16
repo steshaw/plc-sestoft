@@ -1,0 +1,67 @@
+Grammar for micro-SQL, very simple SQL SELECT statements
+--------------------------------------------------------
+sestoft@itu.dk * 2001-02-22
+
+Grammar
+-------
+
+selstmt ::=                              program
+        select exprs1 from names1
+
+expr ::=
+        *                                 star (all fields)
+        column                            a single column from a table
+        NAME ( exprs )                    function application
+        const                             constant literal
+        ( expr )                          parenthesized expression
+        not expr                          logical negation
+        expr op expr                      arithmetic, comparison
+
+exprs ::= 
+                                          no expressions
+       exprs1                             at least one expression
+
+exprs1 ::=                                comma-separated expression list
+        expr
+        expr ,  exprs1
+
+names1 ::=                                comma-separated name list
+        name
+        name ,  names1
+
+
+const ::=                                 constant literals
+        CSTINT                            integer literal
+        CSTBOOL                           boolean literal
+        CSTSTRING                         string literal
+
+
+Lexical matters: tokens and comments
+------------------------------------
+
+ID:         ['a'-'z''A'-'Z']['a'-'z''A'-'Z''0'-'9''_']*
+
+            except for the keywords, which are:
+
+               and false from not or select true
+
+            Keywords and identifiers may be written in lower case or
+            upper case, but are converted to lower case.
+
+	    Also, in true SQL style, identifiers may be enclosed in
+	    double quotes:
+
+            '"'['a'-'z''A'-'Z''_']['a'-'z''A'-'Z''_''0'-'9'' ']*'"'
+
+CSTINT:     -?[0-9]+
+
+CSTBOOL:    false | true
+
+CSTSTRING:  'any characters and embedded quotes '' even'
+            
+OP:         + - * / % = <> < <= > >= 
+
+
+Comments:
+
+        -- this comment extends to the end of line
