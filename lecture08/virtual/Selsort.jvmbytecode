@@ -1,0 +1,243 @@
+Compiled from "Selsort.java"
+class Selsort extends java.lang.Object
+  SourceFile: "Selsort.java"
+  minor version: 0
+  major version: 50
+  Constant pool:
+const #1 = Method	#18.#34;	//  java/lang/Object."<init>":()V
+const #2 = Field	#17.#35;	//  Selsort.rnd:Ljava/util/Random;
+const #3 = int	1000000;
+const #4 = Method	#15.#36;	//  java/util/Random.nextInt:(I)I
+const #5 = Method	#17.#37;	//  Selsort.SelectionSort:([I)V
+const #6 = Field	#38.#39;	//  java/lang/System.out:Ljava/io/PrintStream;
+const #7 = class	#40;	//  java/lang/StringBuilder
+const #8 = Method	#7.#34;	//  java/lang/StringBuilder."<init>":()V
+const #9 = Method	#7.#41;	//  java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+const #10 = String	#42;	//   
+const #11 = Method	#7.#43;	//  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+const #12 = Method	#7.#44;	//  java/lang/StringBuilder.toString:()Ljava/lang/String;
+const #13 = Method	#45.#46;	//  java/io/PrintStream.print:(Ljava/lang/String;)V
+const #14 = Method	#45.#47;	//  java/io/PrintStream.println:()V
+const #15 = class	#48;	//  java/util/Random
+const #16 = Method	#15.#34;	//  java/util/Random."<init>":()V
+const #17 = class	#49;	//  Selsort
+const #18 = class	#50;	//  java/lang/Object
+const #19 = Asciz	rnd;
+const #20 = Asciz	Ljava/util/Random;;
+const #21 = Asciz	<init>;
+const #22 = Asciz	()V;
+const #23 = Asciz	Code;
+const #24 = Asciz	LineNumberTable;
+const #25 = Asciz	main;
+const #26 = Asciz	([Ljava/lang/String;)V;
+const #27 = Asciz	StackMapTable;
+const #28 = class	#51;	//  "[I"
+const #29 = Asciz	SelectionSort;
+const #30 = Asciz	([I)V;
+const #31 = Asciz	<clinit>;
+const #32 = Asciz	SourceFile;
+const #33 = Asciz	Selsort.java;
+const #34 = NameAndType	#21:#22;//  "<init>":()V
+const #35 = NameAndType	#19:#20;//  rnd:Ljava/util/Random;
+const #36 = NameAndType	#52:#53;//  nextInt:(I)I
+const #37 = NameAndType	#29:#30;//  SelectionSort:([I)V
+const #38 = class	#54;	//  java/lang/System
+const #39 = NameAndType	#55:#56;//  out:Ljava/io/PrintStream;
+const #40 = Asciz	java/lang/StringBuilder;
+const #41 = NameAndType	#57:#58;//  append:(I)Ljava/lang/StringBuilder;
+const #42 = Asciz	 ;
+const #43 = NameAndType	#57:#59;//  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+const #44 = NameAndType	#60:#61;//  toString:()Ljava/lang/String;
+const #45 = class	#62;	//  java/io/PrintStream
+const #46 = NameAndType	#63:#64;//  print:(Ljava/lang/String;)V
+const #47 = NameAndType	#65:#22;//  println:()V
+const #48 = Asciz	java/util/Random;
+const #49 = Asciz	Selsort;
+const #50 = Asciz	java/lang/Object;
+const #51 = Asciz	[I;
+const #52 = Asciz	nextInt;
+const #53 = Asciz	(I)I;
+const #54 = Asciz	java/lang/System;
+const #55 = Asciz	out;
+const #56 = Asciz	Ljava/io/PrintStream;;
+const #57 = Asciz	append;
+const #58 = Asciz	(I)Ljava/lang/StringBuilder;;
+const #59 = Asciz	(Ljava/lang/String;)Ljava/lang/StringBuilder;;
+const #60 = Asciz	toString;
+const #61 = Asciz	()Ljava/lang/String;;
+const #62 = Asciz	java/io/PrintStream;
+const #63 = Asciz	print;
+const #64 = Asciz	(Ljava/lang/String;)V;
+const #65 = Asciz	println;
+
+{
+public static final java.util.Random rnd;
+
+
+Selsort();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#1; //Method java/lang/Object."<init>":()V
+   4:	return
+  LineNumberTable: 
+   line 6: 0
+
+
+public static void main(java.lang.String[]);
+  Code:
+   Stack=4, Locals=4, Args_size=1
+   0:	bipush	10
+   2:	istore_1
+   3:	iload_1
+   4:	newarray int
+   6:	astore_2
+   7:	iconst_0
+   8:	istore_3
+   9:	iload_3
+   10:	iload_1
+   11:	if_icmpge	31
+   14:	aload_2
+   15:	iload_3
+   16:	getstatic	#2; //Field rnd:Ljava/util/Random;
+   19:	ldc	#3; //int 1000000
+   21:	invokevirtual	#4; //Method java/util/Random.nextInt:(I)I
+   24:	iastore
+   25:	iinc	3, 1
+   28:	goto	9
+   31:	aload_2
+   32:	invokestatic	#5; //Method SelectionSort:([I)V
+   35:	iconst_0
+   36:	istore_3
+   37:	iload_3
+   38:	iload_1
+   39:	if_icmpge	75
+   42:	getstatic	#6; //Field java/lang/System.out:Ljava/io/PrintStream;
+   45:	new	#7; //class java/lang/StringBuilder
+   48:	dup
+   49:	invokespecial	#8; //Method java/lang/StringBuilder."<init>":()V
+   52:	aload_2
+   53:	iload_3
+   54:	iaload
+   55:	invokevirtual	#9; //Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   58:	ldc	#10; //String  
+   60:	invokevirtual	#11; //Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   63:	invokevirtual	#12; //Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+   66:	invokevirtual	#13; //Method java/io/PrintStream.print:(Ljava/lang/String;)V
+   69:	iinc	3, 1
+   72:	goto	37
+   75:	getstatic	#6; //Field java/lang/System.out:Ljava/io/PrintStream;
+   78:	invokevirtual	#14; //Method java/io/PrintStream.println:()V
+   81:	return
+  LineNumberTable: 
+   line 8: 0
+   line 9: 3
+   line 10: 7
+   line 11: 14
+   line 10: 25
+   line 12: 31
+   line 13: 35
+   line 14: 42
+   line 13: 69
+   line 15: 75
+   line 16: 81
+
+  StackMapTable: number_of_entries = 4
+   frame_type = 254 /* append */
+     offset_delta = 9
+     locals = [ int, class "[I", int ]
+   frame_type = 250 /* chop */
+     offset_delta = 21
+   frame_type = 252 /* append */
+     offset_delta = 5
+     locals = [ int ]
+   frame_type = 250 /* chop */
+     offset_delta = 37
+
+
+public static void SelectionSort(int[]);
+  Code:
+   Stack=4, Locals=4, Args_size=1
+   0:	iconst_0
+   1:	istore_1
+   2:	iload_1
+   3:	aload_0
+   4:	arraylength
+   5:	if_icmpge	57
+   8:	iload_1
+   9:	istore_2
+   10:	iload_1
+   11:	iconst_1
+   12:	iadd
+   13:	istore_3
+   14:	iload_3
+   15:	aload_0
+   16:	arraylength
+   17:	if_icmpge	37
+   20:	aload_0
+   21:	iload_3
+   22:	iaload
+   23:	aload_0
+   24:	iload_2
+   25:	iaload
+   26:	if_icmpge	31
+   29:	iload_3
+   30:	istore_2
+   31:	iinc	3, 1
+   34:	goto	14
+   37:	aload_0
+   38:	iload_1
+   39:	iaload
+   40:	istore_3
+   41:	aload_0
+   42:	iload_1
+   43:	aload_0
+   44:	iload_2
+   45:	iaload
+   46:	iastore
+   47:	aload_0
+   48:	iload_2
+   49:	iload_3
+   50:	iastore
+   51:	iinc	1, 1
+   54:	goto	2
+   57:	return
+  LineNumberTable: 
+   line 21: 0
+   line 22: 8
+   line 23: 10
+   line 24: 20
+   line 25: 29
+   line 23: 31
+   line 26: 37
+   line 21: 51
+   line 28: 57
+
+  StackMapTable: number_of_entries = 5
+   frame_type = 252 /* append */
+     offset_delta = 2
+     locals = [ int ]
+   frame_type = 253 /* append */
+     offset_delta = 11
+     locals = [ int, int ]
+   frame_type = 16 /* same */
+   frame_type = 250 /* chop */
+     offset_delta = 5
+   frame_type = 249 /* chop */
+     offset_delta = 19
+
+
+static {};
+  Code:
+   Stack=2, Locals=0, Args_size=0
+   0:	new	#15; //class java/util/Random
+   3:	dup
+   4:	invokespecial	#16; //Method java/util/Random."<init>":()V
+   7:	putstatic	#2; //Field rnd:Ljava/util/Random;
+   10:	return
+  LineNumberTable: 
+   line 18: 0
+
+
+}
+
