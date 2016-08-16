@@ -1,0 +1,25 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: Sierpinski
+%%Author: Morten Larsen (ml@dina.kvl.dk) LIFE, University of Copenhagen
+%%CreationDate: Fri Sep 24 1999
+%%BoundingBox: 0 0 444 386
+% Draw a Sierpinski triangle
+
+/sierp { % stack xtop ytop w h
+dup 1 lt 2 index 1 lt or {
+  % Triangle less than 1 point big - draw it
+     4 2 roll moveto
+     1 index -.5 mul exch -1 mul rlineto 0 rlineto closepath stroke
+  } {
+  % recurse
+     .5 mul exch .5 mul exch
+     4 copy sierp
+     4 2 roll 2 index sub exch 3 index .5 mul 5 copy sub exch 4 2 roll sierp
+     add exch 4 2 roll sierp
+  } ifelse
+} bind def
+
+0 setgray
+.1 setlinewidth
+222 432 60 sin mul 6 add 432 1 index sierp
+showpage
