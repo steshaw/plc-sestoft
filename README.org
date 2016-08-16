@@ -1,4 +1,6 @@
 * Programming Language Concepts
 
-This repository contains the slides and code available at
-https://www.itu.dk/people/sestoft/plc/.
+My repository for working through Peter Sesoft's book, [[https://www.itu.dk/people/sestoft/plc/]["Programming Language Concepts"]].
+
+If you're interested in doing the same, check out the
+[[https://github.com/steshaw/plc-sesoft/tree/imported][=imported=]] branch.
